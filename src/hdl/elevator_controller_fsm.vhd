@@ -87,7 +87,8 @@ architecture Behavioral of elevator_controller_fsm is
     -- variable type can take on. Now you can assign a signal as 
     -- "sm_floor" the same way you'd assign a signal as std_logic
 	-- how would you modify this to go up to 15 floors?
-	type sm_floor is (s_floor1, s_floor2, s_floor3, s_floor4);
+	type sm_floor is (s_floor1, s_floor2, s_floor3, s_floor4, s_floor5, s_floor6, s_floor7, s_floor8,
+	                  s_floor9, s_floor10,  s_floor11,  s_floor12,  s_floor13,  s_floor14,  s_floor15,  s_floor16);
 	
 	-- Here you create variables that can take on the values defined above. Neat!	
 	signal f_Q, f_Q_next: sm_floor;
@@ -100,20 +101,56 @@ begin
     f_Q_next <= s_floor2 when (f_Q = s_floor1) and (i_up_down = '1') else
                 s_floor3 when (f_Q = s_floor2) and (i_up_down = '1') else
                 s_floor4 when (f_Q = s_floor3) and (i_up_down = '1') else
-                s_floor4 when (f_Q = s_floor4) and (i_up_down = '1') else
+                s_floor5 when (f_Q = s_floor4) and (i_up_down = '1') else
+                s_floor6 when (f_Q = s_floor5) and (i_up_down = '1') else
+                s_floor7 when (f_Q = s_floor6) and (i_up_down = '1') else
+                s_floor8 when (f_Q = s_floor7) and (i_up_down = '1') else
+                s_floor9 when (f_Q = s_floor8) and (i_up_down = '1') else
+                s_floor10 when (f_Q = s_floor9) and (i_up_down = '1') else
+                s_floor11 when (f_Q = s_floor10) and (i_up_down = '1') else
+                s_floor12 when (f_Q = s_floor11) and (i_up_down = '1') else
+                s_floor13 when (f_Q = s_floor12) and (i_up_down = '1') else
+                s_floor14 when (f_Q = s_floor13) and (i_up_down = '1') else
+                s_floor15 when (f_Q = s_floor14) and (i_up_down = '1') else
+                s_floor16 when (f_Q = s_floor15) and (i_up_down = '1') else
+                s_floor16 when (f_Q = s_floor16) and (i_up_down = '1') else
     -- going down
                 s_floor1 when (f_Q = s_floor1) and (i_up_down = '0') else
                 s_floor1 when (f_Q = s_floor2) and (i_up_down = '0') else
                 s_floor2 when (f_Q = s_floor3) and (i_up_down = '0') else
-                s_floor3 when (f_Q = s_floor4) and (i_up_down = '0') else f_Q;
+                s_floor3 when (f_Q = s_floor4) and (i_up_down = '0') else 
+                s_floor4 when (f_Q = s_floor5) and (i_up_down = '0') else
+                s_floor5 when (f_Q = s_floor6) and (i_up_down = '0') else
+                s_floor6 when (f_Q = s_floor7) and (i_up_down = '0') else
+                s_floor7 when (f_Q = s_floor8) and (i_up_down = '0') else
+                s_floor8 when (f_Q = s_floor9) and (i_up_down = '0') else
+                s_floor9 when (f_Q = s_floor10) and (i_up_down = '0') else
+                s_floor10 when (f_Q = s_floor11) and (i_up_down = '0') else
+                s_floor11 when (f_Q = s_floor12) and (i_up_down = '0') else 
+                s_floor12 when (f_Q = s_floor13) and (i_up_down = '0') else
+                s_floor13 when (f_Q = s_floor14) and (i_up_down = '0') else
+                s_floor14 when (f_Q = s_floor15) and (i_up_down = '0') else
+                s_floor15 when (f_Q = s_floor16) and (i_up_down = '0') else f_Q;
 
-  
 	-- Output logic
         o_floor <= "0001" when f_Q = s_floor1 else
                    "0010" when f_Q = s_floor2 else
                    "0011" when f_Q = s_floor3 else
                    "0100" when f_Q = s_floor4 else
+                   "0101" when f_Q = s_floor5 else
+                   "0110" when f_Q = s_floor6 else
+                   "0111" when f_Q = s_floor7 else
+                   "1000" when f_Q = s_floor8 else
+                   "1001" when f_Q = s_floor9 else
+                   "1010" when f_Q = s_floor10 else
+                   "1011" when f_Q = s_floor11 else
+                   "1100" when f_Q = s_floor12 else
+                   "1101" when f_Q = s_floor13 else
+                   "1110" when f_Q = s_floor14 else
+                   "1111" when f_Q = s_floor15 else
+                   "0000" when f_Q = s_floor16 else
                    "0010";
+                   
 --    with f_Q select
 --        o_floor <= "0001" when s_floor1 else
 --                   "0010" when s_floor2 else
