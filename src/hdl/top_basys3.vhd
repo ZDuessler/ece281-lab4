@@ -177,7 +177,7 @@ begin
 	   );
 	   
 	TDM_clock_divider_inst : clock_divider
-          generic map (k_DIV => 6666667)
+          generic map (k_DIV => 250000)
           port map (
               i_clk => clk,
               i_reset => w_clk_reset,
